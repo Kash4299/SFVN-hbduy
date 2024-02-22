@@ -1,0 +1,9 @@
+{
+    "main": {
+        "port": "8080"
+    },
+    "coingecko": {
+        "url": "https://api.coingecko.com/api/v3",
+        "api_key": "CG-jztzX6oPA8z2ekw5Do7wZwXW"
+    }
+}
