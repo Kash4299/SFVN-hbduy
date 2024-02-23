@@ -56,12 +56,12 @@ func (s *Histories) cacheHistories(ctx context.Context, symbol string, days int,
 			return historicalData, err
 		}
 		var historicalDataTmp []model.HistoricalData
-		var orginNumber float64
+		var originalNumber float64
 		var percentageChange float64
 		for _, item := range historiesResp {
-			change := math.Abs(orginNumber - item[4])
-			if orginNumber != 0 {
-				percentageChange = (change / orginNumber) * 100
+			change := math.Abs(originalNumber - item[4])
+			if originalNumber != 0 {
+				percentageChange = (change / originalNumber) * 100
 			}
 			historicalDataTmp = append(historicalDataTmp, model.HistoricalData{
 				High:   item[2],
@@ -71,7 +71,7 @@ func (s *Histories) cacheHistories(ctx context.Context, symbol string, days int,
 				Time:   int64(item[0]),
 				Change: percentageChange,
 			})
-			orginNumber = item[4]
+			originalNumber = item[4]
 		}
 		historicalData = historicalDataTmp
 
